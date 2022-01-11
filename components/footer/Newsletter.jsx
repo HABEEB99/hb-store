@@ -42,8 +42,8 @@ const Newsletter = () => {
   //   };
 
   return (
-    <div className=" mb-[3.5rem]">
-      <h2 className="text-4xl italic mb-4 ">Newsletter</h2>
+    <div className=" mb-[3rem]">
+      <h2 className="text-4xl mb-[1.3rem] ">Newsletter</h2>
 
       <form>
         <div className="relative flex flex-col mt-4">
