@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 const initialState = {
   products: [],
+  // products: Cookies.get('products') ? JSON.parse(Cookies.get('products')) : [],
   productTotalPrice: 0,
   cartTotalPrice: 0,
   // productTotalQuantity: 0,
@@ -13,7 +14,9 @@ const initialState = {
 
 export const cartSlice = createSlice({
   name: 'cart',
+
   initialState,
+
   reducers: {
     addToCart: (state, action) => {
       const productIndex = state.products.findIndex(
@@ -33,7 +36,7 @@ export const cartSlice = createSlice({
         });
       }
 
-      // Cookies.set('products', JSON.stringify(state.products));
+      // Cookies.set('products', JSON.stringify(productInCart));
       // localStorage.setItem('products', JSON.stringify(state.products));
     },
 
@@ -69,24 +72,24 @@ export const cartSlice = createSlice({
       state.products = [];
     },
 
-    getTotals: (state, action) => {
-      let { total, quantity } = state.products.reduce(
-        (accumulator, product) => {
-          const { price, productQuantity } = product;
-          const productTotal = price * productQuantity;
-          accumulator.total += productTotal;
-          accumulator.quantity += productQuantity;
+    // getTotals: (state, action) => {
+    //   let { total, quantity } = state.products.reduce(
+    //     (accumulator, product) => {
+    //       const { price, productQuantity } = product;
+    //       const productTotal = price * productQuantity;
+    //       accumulator.total += productTotal;
+    //       accumulator.quantity += productQuantity;
 
-          return accumulator;
-        },
-        {
-          total: 0,
-          quantity: 0,
-        }
-      );
-      state.productTotalQuantity = quantity;
-      state.productTotalAmount = total;
-    },
+    //       return accumulator;
+    //     },
+    //     {
+    //       total: 0,
+    //       quantity: 0,
+    //     }
+    //   );
+    //   state.productTotalQuantity = quantity;
+    //   state.productTotalAmount = total;
+    // },
 
     // totalSum: (state, action) => {
     //   let total = state.products.map(
@@ -102,16 +105,10 @@ export const {
   removeFromCart,
   decreaseProductQuantity,
   removeAllProducts,
-  getTotals,
-  totalSum,
+
 } = cartSlice.actions;
 
 export const selectProducts = (state) => state.cart.products;
-export const selectTotalPrice = (state) => {
-  // let total = state.products.forEach(
-  //   (product) => product.price * product.productQuantity
-  // );
-  // state.cart.cartTotalPrice += total;
-};
+
 
 export default cartSlice.reducer;
