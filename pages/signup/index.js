@@ -23,11 +23,7 @@ const SignUp = () => {
   }, []);
 
   const dispatch = useDispatch();
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
-
+ 
   const submitForm = async ({ name, email, password, confirmPassword }) => {
     if (password !== confirmPassword) {
       toast.error(`Invalid email or Password`, {
@@ -52,7 +48,7 @@ const SignUp = () => {
   };
   return (
     <div className="w-screen h-[87vh] px-6 md:px-16 lg:px-32 flex flex-col items-center justify-center">
-      <h1 className="text-6xl font-bold text-logo mt-8">Sign Up</h1>
+      <h1 className="text-6xl font-bold text-cta mt-8">Sign Up</h1>
       <form onSubmit={handleSubmit(submitForm)} className="mt-8 w-[50rem]">
         <div className="flex flex-col w-[50rem] mb-8 mt-4 relative">
           <input

@@ -1,22 +1,31 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdShoppingCart } from 'react-icons/md';
+import { GoPrimitiveDot } from 'react-icons/go';
 import { AiFillHome, AiFillInfoCircle } from 'react-icons/ai';
 import { MdContactPhone } from 'react-icons/md';
 import { FaBars, FaBlog, FaProductHunt, FaShoppingCart } from 'react-icons/fa';
 import NavItem from './NavItem';
 import MobileNav from './MobileNav';
 import { useSelector } from 'react-redux';
-import { selectProducts } from '../../slices/cartSlice';
 import Cart from '../cart/Cart';
+import { selectProducts } from '../../redux/slices/cartSlice';
+import { selectUser } from '../../redux/slices/userSlice';
+import UserDetails from '../user/UserDetails';
 
 const Header = () => {
+  const currentUser = useSelector(selectUser);
   const productsCount = useSelector(selectProducts);
 
   const [openCart, setOpenCart] = useState(false);
 
   const handleCart = () => {
     setOpenCart(!openCart);
+  };
+  const [userInfo, setUserInfo] = useState(false);
+
+  const handleUser = () => {
+    setUserInfo(!userInfo);
   };
 
   const [openMobileNav, setOpenMobileNav] = useState(false);
@@ -46,14 +55,30 @@ const Header = () => {
 
       {/* CTA */}
       <div className="flex items-center">
-        <button className="hidden lg:block mr-4 text-white text-xl font-bold w-24 h-10 bg-btn rounded-md hover:bg-body hover:text-gray-500 hover:border-4 hover:border-btn transition duration-400 ease-out">
-          {' '}
-          Login{' '}
-        </button>
+        {currentUser ? (
+          <div
+            onClick={handleUser}
+            className="flex items-center cursor-pointer"
+          >
+            <GoPrimitiveDot className="text-2xl text-green-600 animate-pulse" />
+            <h2 className="text-3xl font-bold mr-4 text-gray-700">
+              {currentUser.name.toUpperCase()}
+            </h2>
+          </div>
+        ) : (
+          <Link href="/login" passHref>
+            <button className="hidden lg:block mr-4 text-white text-xl font-bold w-24 h-10 bg-btn rounded-md hover:bg-body hover:text-gray-500 hover:border-4 hover:border-btn transition duration-400 ease-out">
+              {' '}
+              Login{' '}
+            </button>
+          </Link>
+        )}
 
-        <button className="hidden lg:block mr-4 text-gray-500 text-xl font-bold w-24 h-10 border-2 border-btn rounded-md hover:bg-btn hover:text-white hover:border-4 hover:border-btn transition duration-400 ease-out">
-          Sign up
-        </button>
+        {/* <Link href="/signup" passHref>
+          <button className="hidden lg:block mr-4 text-gray-500 text-xl font-bold w-24 h-10 border-2 border-btn rounded-md hover:bg-btn hover:text-white hover:border-4 hover:border-btn transition duration-400 ease-out">
+            Sign up
+          </button>
+        </Link> */}
 
         <div onClick={handleCart} className="relative group">
           <FaShoppingCart className="text-4xl text-cta group-hover:text-logo" />
@@ -66,7 +91,7 @@ const Header = () => {
       <FaBars onClick={handleClick} className="text-4xl text-cta lg:hidden" />
 
       {openMobileNav && <MobileNav handleClick={handleClick} />}
-
+      {userInfo && <UserDetails />}
       {openCart && <Cart />}
     </div>
   );

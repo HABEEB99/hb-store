@@ -7,16 +7,26 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
+    "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
     "emailjs": "^3.7.0",
     "firebase": "^9.6.1",
+    "framer-motion": "^6.2.1",
+    "js-cookie": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.2.2",
+    "mongoose": "^6.1.4",
     "next": "latest",
     "next-auth": "^4.0.6",
+    "next-connect": "^0.11.0",
     "react": "^17.0.2",
     "react-currency-formatter": "^1.1.0",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.24.1",
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
-    "react-responsive-carousel": "^3.2.22"
+    "react-responsive-carousel": "^3.2.22",
+    "react-toastify": "^8.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",

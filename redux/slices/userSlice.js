@@ -9,6 +9,8 @@ const initialState = {
 
   currentUser: null,
   shippingAddress: null,
+  paymentType: null,
+  order: null,
 };
 
 const userSlice = createSlice({
@@ -22,13 +24,24 @@ const userSlice = createSlice({
     addShippingAddress: (state, action) => {
       state.shippingAddress = action.payload;
     },
+
+    addPaymentMethod: (state, action) => {
+      state.paymentType = action.payload;
+    },
+
+    addOrder: (state, payload) => {
+      state.order = action.payload;
+    },
   },
 });
 
-export const { addUser, addShippingAddress } = userSlice.actions;
+export const { addUser, addShippingAddress, addPaymentMethod, addOrder } =
+  userSlice.actions;
 
 export const selectUser = (state) => state.user.currentUser;
 
 export const selectAddress = (state) => state.user.shippingAddress;
+
+export const selectPayment = (state) => state.user.paymentType;
 
 export default userSlice.reducer;

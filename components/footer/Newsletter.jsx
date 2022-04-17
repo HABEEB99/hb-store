@@ -46,20 +46,26 @@ const Newsletter = () => {
       <h2 className="text-4xl mb-[1.3rem] ">Newsletter</h2>
 
       <form>
-        <div className="relative flex flex-col mt-4">
+        <div className="relative flex flex-col mt-6">
           <input
             className="peer border-2 placeholder-transparent
-            border-btn w-48 md:w-60 h-10"
+            focus:border-btn w-48 md:w-60 h-10 rounded-md"
             value={value}
             onChange={handleChange}
             name="email"
             id="email"
             type="email"
-            placeholder=" Input your email"
+            placeholder="Email"
             required
           />
-          <label className="absolute " htmlFor="email">
-            Email
+          <label
+            className="absolute -top-3 left-0 peer-focus:border-btn peer-focus:-top-6
+            peer-focus:uppercase peer-focus:text-sm peer-focus:text-logo
+            peer-placeholder-shown:top-1 peer-placeholder-shown:text-2xl 
+            peer-placeholder-shown:text-gray-400 transition-all"
+            htmlFor="email"
+          >
+            Input your email
           </label>
         </div>
         <button className=" hover:bg-white font-bold hover:text-gray-500 transition duration-300 ease-in-out rounded-lg block bg-btn mt-2 h-10 w-48 md:w-60 text-2xl text-white">

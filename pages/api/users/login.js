@@ -8,7 +8,7 @@ const handler = nc();
 
 handler.post(async (req, res) => {
   await db.connect();
-  const users = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ email: req.body.email });
   await db.disconnect();
   if (user && bcrypt.compareSync(req.body.password, user.password)) {
     const token = signToken(user);
@@ -21,7 +21,7 @@ handler.post(async (req, res) => {
     });
   } else {
     res.status(401).send({
-      message: 'Invalid usernsme or password',
+      message: 'Invalid username or password',
     });
   }
 });

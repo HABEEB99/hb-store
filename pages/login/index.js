@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { addUser, selectUser } from '../../redux/slices/userSlice';
@@ -49,43 +49,7 @@ const Login = () => {
       <h1 className="text-6xl font-bold text-logo mt-8">Login</h1>
 
       <form onSubmit={handleSubmit(submitForm)} className="mt-8 w-[50rem]">
-        {/* <div className="flex flex-col w-[50rem] mb-8 mt-4 relative">
-          <Controller
-            name="email"
-            control={control}
-            defaultValue=""
-            rules={{
-              required: true,
-              pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-            }}
-            render={({ field }) => (
-              <input
-                {...field}
-                error={Boolean(errors.email)}
-                helperText={
-                  errors.email
-                    ? errors.email.type === 'pattern'
-                      ? 'Invalid Email Address'
-                      : 'Email is required'
-                    : ''
-                }
-                className="peer placeholder-transparent w-full h-12 rounded-md text-2xl  
-                border-2 border-body focus:border-btn "
-                type="text"
-                id="email"
-                placeholder="email"
-              />
-            )}
-          ></Controller>
-          <label
-            className="peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-placeholder-shown:text-2xl 
-            absolute -top-8  left-0 text-xl text-logo transition-all font-bold
-            peer-focus:-top-8 peer-focus:text-xl peer-focus:text-logo"
-            htmlFor="email"
-          >
-            Email
-          </label>
-              </div>*/}
+        
         <div className="flex flex-col w-[50rem] mb-8 mt-4 relative">
           <input
             className="peer placeholder-transparent w-full h-12 rounded-md text-2xl  
@@ -114,43 +78,6 @@ const Login = () => {
           </label>
         </div>
 
-        {/* <div className=" flex flex-col w-[50rem] mb-4 relative">
-          <Controller
-            name="password"
-            control={control}
-            defaultValue=""
-            rules={{
-              required: true,
-              minLength: 8,
-            }}
-            render={({ field }) => (
-              <input
-                {...field}
-                error={Boolean(errors.password)}
-                helperText={
-                  errors.password
-                    ? errors.password.type === 'minLength'
-                      ? "Password length shouldn't be less than 8 characters"
-                      : 'Password is required'
-                    : ''
-                }
-                className="peer placeholder-transparent w-full h-12 rounded-md text-2xl  
-                border-2 border-body focus:border-btn "
-                type="password"
-                id="password"
-                placeholder="password"
-              />
-            )}
-          ></Controller>
-          <label
-            className="peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-placeholder-shown:text-2xl 
-            absolute -top-8  left-0 text-xl text-logo transition-all font-bold
-            peer-focus:-top-8 peer-focus:text-xl peer-focus:text-logo"
-            htmlFor="password"
-          >
-            Password
-          </label>
-              </div>*/}
 
         <div className=" flex flex-col w-[50rem] mb-4 relative">
           <input
